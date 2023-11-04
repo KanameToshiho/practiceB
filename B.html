@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="icon" href="/practice/favicon.png" />
+    <link rel="apple-touch-icon" href="/practice/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice B</title>
+    <style>
+        /* CSS styles for the game */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: #00c1e0;
+            color: #fff;
+            text-align: center;
+            padding: 2px;
+        }
+
+        h1 {
+            font-size: 27px;
+        }
+
+        main {
+            padding: 4px;
+            text-align: center;
+            max-width: 100%; /* Ensure content doesn't overflow on smaller screens */
+        }
+
+        .morse-image {
+            width: 200px; /* Set a fixed width for the image container */
+            height: 150px; /* Set a fixed height for the image container */
+            position: relative;
+            margin: 4px auto;
+            border: 2px solid #00c1e0;
+            border-radius: 5px;
+            overflow: hidden; /* Hide overflowing image content */
+        }
+
+        .morse-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .options p {
+            font-size: 20px;
+            margin: 10px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        li {
+            margin: 10px;
+            width: calc(25% - 20px);
+        }
+
+        button {
+            background-color: #00c1e0;
+            color: #fff;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #008bb7;
+        }
+
+        #feedback {
+            display: none;
+        }
+
+        #result {
+            font-size: 18px;
+            margin: 10px;
+        }
+
+        #result.correct {
+            color: #5eb95e;
+        }
+
+        #result.incorrect {
+            color: #ff6666;
+        }
+
+        #feedback button {
+            background-color: #00c1e0;
+            color: #fff;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #feedback button:hover {
+            background-color: #008bb7;
+        }
+
+        #timer {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Pattern B Learning</h1>
+        <div id="timer">Time: 5 seconds</div>
+    </header>
+    <main>
+        <div class="morse-image">
+            <svg
+   width="800mm"
+   height="297mm"
+   viewBox="-50 -60 310 347"
+   version="1.1"
+   id="svg1"
+   style="height:100%;width:100%;"
+   sodipodi:docname="fox2.svg"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.70110129"
+     inkscape:cx="302.38141"
+     inkscape:cy="590.49956"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient27"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop27" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop28" />
+    </linearGradient>
+    <inkscape:path-effect
+       effect="bool_op"
+       operand-path=""
+       id="path-effect12"
+       is_visible="true"
+       lpeversion="1"
+       operation="union"
+       swap-operands="false"
+       filltype-this="from-curve"
+       filter=""
+       filltype-operand="from-curve" />
+    <filter
+       id="selectable_hidder_filter"
+       width="1"
+       height="1"
+       x="0"
+       y="0"
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="LPE boolean visibility">
+      <feComposite
+         id="boolops_hidder_primitive"
+         result="composite1"
+         operator="arithmetic"
+         in2="SourceGraphic"
+         in="BackgroundImage" />
+    </filter>
+    <inkscape:path-effect
+       effect="bool_op"
+       operand-path=""
+       id="path-effect11"
+       is_visible="true"
+       lpeversion="1"
+       operation="symdiff"
+       swap-operands="false"
+       filltype-this="from-curve"
+       filter=""
+       filltype-operand="from-curve" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient27"
+       id="radialGradient30"
+       cx="102.15182"
+       cy="64.110352"
+       fx="102.15182"
+       fy="64.110352"
+       r="42.707142"
+       gradientTransform="matrix(1.2152815,0,0,1.0677738,-22.003118,-67.112987)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient27"
+       id="radialGradient39"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.2152815,0,0,1.0677738,-22.003121,-51.484505)"
+       cx="102.15182"
+       cy="64.110352"
+       fx="102.15182"
+       fy="64.110352"
+       r="42.707142" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="rect46"
+       style="fill:#aa4400;stroke-width:0.33905"
+       d="m 91.163189,187.98179 48.104091,-1.80852 40.86585,91.73749 c 0,0 -59.41525,20.12637 -79.3448,2.34308 -0.0474,-0.0422 -0.0945,-0.0846 -0.14158,-0.12741 -22.605304,-20.51698 -9.483561,-92.14464 -9.483561,-92.14464 z"
+       sodipodi:nodetypes="cccssc"
+       inkscape:label="tail1" />
+    <path
+       id="path47"
+       style="fill:#ff7f2a;fill-opacity:1;stroke-width:0.33905;stroke-dasharray:none"
+       d="m 144.93685,236.88276 0.20724,36.52763 -21.30413,-32.80262 -4.40487,32.80262 -10.26929,-30.49574 -3.56462,30.49574 -11.906516,-26.16112 -3.745477,11.23987 c 1.992741,8.99382 5.329124,16.76466 10.697593,21.63718 0.047,0.0427 0.094,0.0854 0.1413,0.12769 19.92952,17.78328 79.3452,-2.34344 79.3452,-2.34344 l -12.74933,-28.62007 -4.37159,15.21641 z"
+       inkscape:label="tail2" />
+    <path
+       id="rect38"
+       style="fill:#ff6600;stroke-width:0.33905"
+       d="m 63.447415,86.058394 79.132295,1.173825 11.62375,133.856351 c -0.68793,2.81168 -103.466485,0.70293 -103.466485,0.70293 z"
+       sodipodi:nodetypes="ccccc"
+       inkscape:label="body" />
+    <path
+       id="rect39"
+       style="fill:#f4ff87;fill-opacity:1;stroke-width:0.33905"
+       d="m 78.621363,86.734424 48.640127,-0.608395 c 0,0 5.18555,99.317791 -18.09601,118.725881 -3.86792,3.22437 -11.149829,3.27638 -14.975658,0 C 71.432235,185.36264 78.621363,86.734424 78.621363,86.734424 Z"
+       sodipodi:nodetypes="ccssc"
+       inkscape:label="stomach" />
+    <path
+       id="rect40"
+       style="fill:#000000;stroke-width:0.33905"
+       d="m 50.622318,221.08857 h 51.790572 l -24.869238,74.62955 -56.290847,-0.93724 8.973001,-11.14565 z"
+       sodipodi:nodetypes="cccccc"
+       inkscape:label="rboot" />
+    <path
+       id="path45"
+       style="fill:#ff6600;fill-opacity:1;stroke-width:0.33905"
+       inkscape:label="rfeet"
+       d="M 77.543396,212.41956 50.622317,221.08882 33.5598,273.41039 h 51.4174 l 16.74223,-50.24121 v -2.32228 z" />
+    <path
+       id="path2"
+       style="fill:#000000;fill-opacity:0.279874;stroke-width:0.33905"
+       d="M 50.622318,221.08857 33.5598,273.41039 h 51.4174 l 17.43556,-52.32157 -24.869108,-8.66949 z M 63.44762,86.058383 50.737242,221.79146 c 0,0 25.371716,0.51907 50.982188,0.69816 V 86.62628 Z"
+       inkscape:label="shadow" />
+
+    <path
+       id="path12"
+       style="display:inline;opacity:1;fill:#f4ff87;fill-opacity:1;stroke-width:0.325025"
+       inkscape:transform-center-x="-0.53847505"
+       inkscape:transform-center-y="15.005854"
+       d="M 102.30353,96.093652 78.621363,86.734423 50.622318,55.053143 79.734426,24.405991 l 22.691344,-6.27922 22.79843,5.86032 28.76054,30.228249 -26.72325,31.910688 z"
+       sodipodi:nodetypes="ccccccccc"
+       inkscape:label="underface" />
+    <path
+       id="path15"
+       style="fill:#ff6600;stroke-width:0.325025"
+       inkscape:transform-center-x="-3.2411161"
+       inkscape:transform-center-y="-0.57988125"
+       d="M 83.880015,25.42042 68.088219,39.89426 50.622317,55.94277 43.014815,23.418458 49.352414,2.7322385 69.515861,9.469256 Z"
+       sodipodi:nodetypes="ccccccc"
+       inkscape:label="rear" />
+    <path
+       id="path16"
+       style="fill:#ff6600;stroke-width:0.325025"
+       inkscape:transform-center-x="3.2411259"
+       inkscape:transform-center-y="-0.57988104"
+       d="m 122.14711,23.76362 15.7918,14.47384 16.04573,16.793892 9.02767,-33.269695 -6.33759,-20.6862196 -20.16346,6.7370177 z"
+       sodipodi:nodetypes="ccccccc"
+       inkscape:label="lear" />
+    <path
+       id="path17"
+       style="fill:#783000;fill-opacity:1;stroke-width:0.251797"
+       inkscape:transform-center-x="-2.4644422"
+       inkscape:transform-center-y="-0.45769643"
+       d="m 81.694909,30.826357 -12.007577,11.424136 -13.280514,11.964848 -5.7845,-24.969124 4.818906,-16.327536 15.33164,5.317497 z"
+       sodipodi:nodetypes="ccccccc"
+       inkscape:label="rearshadow" />
+    <path
+       id="path18"
+       style="fill:#783000;fill-opacity:1;stroke-width:0.251797"
+       inkscape:transform-center-x="2.464443"
+       inkscape:transform-center-y="-0.45769643"
+       d="m 122.91215,30.826357 12.00758,11.424136 13.28052,11.964848 5.78449,-24.969124 -4.8189,-16.327536 -15.33164,5.317497 z"
+       sodipodi:nodetypes="ccccccc"
+       inkscape:label="learshadow" />
+    <path
+       id="rect50"
+       style="fill:#000000;fill-opacity:0.179245;stroke-width:0.33905"
+       d="m 101.87016,18.281039 -22.135622,6.124943 -29.112221,30.647169 27.998752,31.681574 23.682411,9.359064 0.21227,-0.08469 z"
+       inkscape:label="faceshadow" />
+    <path
+       id="path19"
+       style="display:inline;fill:#ff6600;fill-opacity:1;stroke:url(#radialGradient39);stroke-width:0.33905;stroke-dasharray:none"
+       inkscape:transform-center-x="-0.53847376"
+       inkscape:transform-center-y="16.319532"
+       d="M 102.42594,15.783986 79.734538,22.612618 50.622317,55.94277 52.88819,58.73145 96.767604,74.753924 c 0,0 -2.343712,-0.04588 5.628286,0.08023 7.97199,0.126113 5.62512,0.07155 5.62512,0.07155 l 43.11433,-16.174254 2.8493,-3.700098 -28.76053,-32.874441 z"
+       sodipodi:nodetypes="ccccccccccc"
+       inkscape:label="face" />
+    <path
+       id="path36"
+       style="display:inline;fill:#2b1100;fill-opacity:1;stroke:url(#radialGradient30);stroke-width:0.33905;stroke-dasharray:none"
+       inkscape:transform-center-x="-0.53892816"
+       inkscape:transform-center-y="16.319543"
+       d="m 108.94598,72.211234 c -0.1514,-0.239707 -0.30134,-0.472348 -0.44965,-0.697514 -0.14831,-0.225167 -0.29484,-0.442659 -0.44025,-0.653235 -0.14539,-0.210588 -0.28937,-0.414272 -0.43206,-0.610257 -0.14271,-0.195972 -0.28434,-0.384631 -0.42454,-0.565963 -0.1402,-0.181346 -0.2791,-0.355029 -0.417,-0.521697 -0.13791,-0.166679 -0.27492,-0.326083 -0.41072,-0.47806 -0.13582,-0.151978 -0.27053,-0.296542 -0.40444,-0.433792 -0.13393,-0.137239 -0.26655,-0.267013 -0.39879,-0.389499 -0.13224,-0.122437 -0.26428,-0.238168 -0.39502,-0.345877 -0.0654,-0.05389 -0.13028,-0.105797 -0.19532,-0.155927 -0.0651,-0.05017 -0.12995,-0.09798 -0.19467,-0.144377 -0.0647,-0.04644 -0.12962,-0.09139 -0.19407,-0.134122 -0.0644,-0.04272 -0.12861,-0.08357 -0.19279,-0.122561 -0.0642,-0.03899 -0.12822,-0.07636 -0.19218,-0.111632 -0.064,-0.03526 -0.12778,-0.06855 -0.19154,-0.100081 -0.0637,-0.03154 -0.12735,-0.06135 -0.19092,-0.08916 -0.0635,-0.02781 -0.12688,-0.05414 -0.19029,-0.07836 -0.0634,-0.02409 -0.127,-0.04632 -0.19029,-0.06668 -0.0633,-0.02037 -0.12647,-0.0385 -0.18965,-0.05513 -0.0632,-0.01664 -0.12656,-0.03204 -0.18968,-0.04495 -0.0631,-0.01291 -0.12597,-0.02359 -0.18902,-0.03266 -0.0631,-0.0087 -0.12601,-0.01639 -0.18904,-0.02186 -0.0631,-0.005 -0.126,-0.0087 -0.18902,-0.01118 -0.0635,-0.0012 -0.12734,-0.0012 -0.19092,6.45e-4 -0.0635,0.0025 -0.12728,0.0062 -0.19092,0.01242 -0.0636,0.0062 -0.12719,0.0139 -0.19091,0.02372 -0.0636,0.0099 -0.1271,0.02099 -0.19092,0.03464 -0.0637,0.01366 -0.1276,0.02943 -0.19154,0.04682 -0.064,0.01739 -0.12807,0.03651 -0.19217,0.05774 -0.0642,0.02124 -0.12852,0.04483 -0.19281,0.06991 -0.0643,0.02508 -0.12893,0.0519 -0.19342,0.08084 -0.0645,0.02893 -0.1287,0.06022 -0.19344,0.09301 -0.0647,0.03278 -0.12968,0.0673 -0.19467,0.103934 -0.0651,0.03663 -0.13004,0.075 -0.19532,0.115482 -0.0653,0.04048 -0.13097,0.08332 -0.19657,0.127701 -0.0656,0.04433 -0.13127,0.0904 -0.197195,0.138605 -0.06582,0.04818 -0.132149,0.0981 -0.198458,0.150152 -0.06636,0.05203 -0.132393,0.105797 -0.199076,0.161713 -0.06669,0.05588 -0.133861,0.114116 -0.200961,0.173894 -0.1342,0.11958 -0.269051,0.246823 -0.405069,0.381801 -0.13602,0.13499 -0.273307,0.277555 -0.41135,0.428018 -0.138043,0.150462 -0.276724,0.308897 -0.417001,0.474844 -0.140276,0.16596 -0.281822,0.339581 -0.424537,0.52105 -0.142716,0.181469 -0.286713,0.370898 -0.432075,0.567901 -0.145361,0.197003 -0.292021,0.401544 -0.440237,0.614095 -0.148217,0.212562 -0.298381,0.432822 -0.449658,0.660944 -0.151278,0.228135 -0.303905,0.464066 -0.458451,0.707785 5.62e-4,0.0025 0.0013,0.0037 0.002,0.0062 0.05974,0.22981 0.121151,0.457671 0.184635,0.683395 0.0641,0.227874 0.130125,0.453426 0.198453,0.676344 0.02662,0.0868 0.05496,0.171299 0.08227,0.257327 0.112669,0.352309 0.228519,0.700135 0.352945,1.036326 0.0011,0.0024 0.0021,0.0062 0.0032,0.0087 l 11.250245,0.143088 c 0.14732,-0.361809 0.2852,-0.737872 0.4195,-1.119101 0.0227,-0.0652 0.0467,-0.128782 0.0691,-0.194434 0.0768,-0.22519 0.15152,-0.453001 0.22419,-0.683408 0.0706,-0.223812 0.13889,-0.450369 0.206,-0.678267 0.002,-0.0062 0.004,-0.01316 0.007,-0.01987 z m -0.007,0.01987 c -0.0671,0.227898 -0.13541,0.454455 -0.206,0.678268 -0.0727,0.230406 -0.1474,0.458217 -0.22419,0.683408 -0.0224,0.06569 -0.0463,0.129266 -0.0691,0.194433 0.17833,-0.506224 0.34272,-1.024653 0.49927,-1.556109 z m -0.919,2.675235 -11.250241,-0.143087 c 1.2004,3.239212 2.95137,5.661229 5.532801,5.702058 2.57328,0.04073 4.40547,-2.336958 5.71744,-5.558971 z M 96.414595,73.717934 c -0.02731,-0.08605 -0.05565,-0.170467 -0.08227,-0.257328 -0.06832,-0.222918 -0.134365,-0.448469 -0.198453,-0.676342 -0.06349,-0.225726 -0.124892,-0.453586 -0.184635,-0.683397 0.143659,0.552554 0.297098,1.090913 0.465358,1.617067 z"
+       inkscape:label="nose" />
+    <ellipse
+       style="fill:#2b1100;fill-opacity:1;stroke-width:0.530611;stroke-dasharray:none"
+       id="path38"
+       ry="3.0522566"
+       rx="4.7870774"
+       cy="-18.132515"
+       cx="90.797607"
+       transform="matrix(0.70656813,0.70764503,-0.96733413,0.25350478,0,0)"
+       inkscape:label="reye" />
+    <ellipse
+       style="fill:#2b1100;fill-opacity:1;stroke-width:0.530611;stroke-dasharray:none"
+       id="ellipse38"
+       ry="3.0522566"
+       rx="4.7870774"
+       cy="147.76297"
+       cx="31.36768"
+       transform="matrix(-0.70656813,0.70764503,0.96733413,0.25350478,0,0)"
+       inkscape:label="leye" />
+
+    <path
+       id="path44"
+       style="fill:#ff6600;fill-opacity:1;stroke-width:0.33905"
+       d="m 153.79025,221.08857 h -51.79058 l 24.86925,74.62955 56.29084,-0.93724 -8.973,-11.14565 z"
+       sodipodi:nodetypes="cccccc"
+       inkscape:label="lfeet" />
+    <path
+       id="path46"
+       style="fill:#000000;stroke-width:0.33905"
+       d="m 119.43509,273.41039 7.43379,22.30774 56.29079,-0.93751 -8.97307,-11.14554 -3.33412,-10.22469 z"
+       inkscape:label="lboot" />
+    <ellipse
+       style="fill:#fd7700;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-opacity:0.245283"
+       id="path1"
+       cx="133.98701"
+       cy="87.839447"
+       rx="0.28664121"
+       ry="0.35146046" />
+    <ellipse
+       style="fill:#ff6600;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-opacity:0.245283"
+       id="ellipse1"
+       cx="70.008705"
+       cy="87.839447"
+       rx="0.28664121"
+       ry="0.35146046" />
+    <ellipse
+       style="fill:#000000;fill-opacity:0;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-opacity:0.245283"
+       id="path3"
+       cx="145.71948"
+       cy="146.80177"
+       rx="11.301941"
+       ry="11.962277" />
+    <ellipse
+       style="fill:#ff6600;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-opacity:0.245283"
+       id="ellipse3"
+       cx="59.169712"
+       cy="146.80177"
+       rx="11.301941"
+       ry="11.962277" />
+    <ellipse
+       style="fill:#fd7700;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-opacity:0.245283"
+       id="ellipse4"
+       cx="145.96768"
+       cy="146.80177"
+       rx="11.301941"
+       ry="11.962277" />
+       <path
+       id="rect41"
+       style="fill:#ff6600;stroke-width:0.707584;stroke-dasharray:none"
+       d="M 63.447415,86.058394 81.694907,73.405812 70.354665,147.81407 H 47.249394 Z"
+       sodipodi:nodetypes="ccccc"
+       inkscape:label="rupperarm" />
+    <path
+       id="path42"
+       style="fill:#fd7700;fill-opacity:1;stroke-width:0.707584;stroke-dasharray:none"
+       d="m 142.57971,87.232219 -19.34118,-13.826407 11.34024,74.408258 h 23.10525 z"
+       sodipodi:nodetypes="ccccc"
+       inkscape:label="lupperarm" />
+       <path
+       id="rect42"
+       style="fill:#ff6600;stroke-width:0.707584;stroke-dasharray:none"
+       d="m 47.502873,146.70788 22.851792,1.10619 c 0,0 1.280329,47.56589 -9.501631,56.63515 -10.781959,9.06928 -27.548431,-0.66272 -27.548431,-0.66272 z"
+       sodipodi:nodetypes="cczcc"
+       inkscape:label="rarm" />
+    <path
+       id="path43"
+       style="fill:#fd7700;fill-opacity:1;stroke-width:0.707584;stroke-dasharray:none"
+       d="m 157.43055,146.70788 -22.85178,1.10619 c 0,0 -4.97079,44.46167 9.50163,56.63515 7.0915,5.96505 27.54842,-0.66272 27.54842,-0.66272 z"
+       sodipodi:nodetypes="ccscc"
+       inkscape:label="arm" />
+  </g>
+</svg>
+
+        </div>
+        <div class="options">
+            <p>What letter does this posture represent?</p>
+            <ul id="answerOptions">
+                <!-- Options will be dynamically added here -->
+            </ul>
+        </div>
+    </main>
+    <section id="feedback" style="display: none;">
+        <p id="result"></p>
+        <button onclick="nextQuestion()">Next Question</button>
+    </section>
+    <script>
+        const hira = [..."あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん"]
+        const hiramap = {
+            "あ":0,
+            "い":1,
+            "う":2,
+            "え":3,
+            "お":4,
+            "か":5,
+            "き":6,
+            "く":7,
+            "け":8,
+            "こ":9,
+            "さ":10,
+            "し":11,
+            "す":12,
+            "せ":13,
+            "そ":14,
+            "た":15,
+            "ち":16,
+            "つ":17,
+            "て":18,
+            "と":19,
+            "な":20,
+            "に":21,
+            "ぬ":22,
+            "ね":23,
+            "の":24,
+            "は":25,
+            "ひ":26,
+            "ふ":27,
+            "へ":28,
+            "ほ":29,
+            "ま":30,
+            "み":31,
+            "む":32,
+            "め":33,
+            "も":34,
+            "や":35,
+            "ゆ":37,
+            "よ":39,
+            "ら":40,
+            "り":41,
+            "る":42,
+            "れ":43,
+            "ろ":44,
+            "わ":45,
+            "を":47,
+            "ん":49
+        }
+        const questions = [
+            {
+                image: "morse_A.png",
+                correctAnswer: "あ",
+                options: []
+            },
+        ];
+        class Pos{
+            constructor(x,y){
+                //thisの設定、プロパティの初期化
+                this.x = x;
+                this.y = y;
+            }
+            plus(cl){
+                return new Pos(this.x + cl.x,this.y + cl.y)
+            }
+            minus(cl){
+                return new Pos(this.x - cl.x,this.y - cl.y)
+            }
+            abs(){
+                return Math.pow(this.x^2 + this.y^2,1/2)
+            }
+        }
+        const rbrig = new Pos(59.169712,146.80177)
+        const lbrig = new Pos(145.71948,146.80177)
+        const rurig = new Pos(70.008705,87.839447)
+        const lurig = new Pos(133.98701,87.839447)
+        let currentQuestion = 0;
+        let timer = 5; // Set the initial time limit
+
+        function shuffleArray(array) {
+            for (let i = 6; i >= 0; i--) {
+                array[i] = hira[Math.floor(Math.random()*(hira.length - 1))]
+            }
+            array[7] = questions[currentQuestion].correctAnswer;
+            for (let i = 7; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+        
+        function updateTimer() {
+            const timerElement = document.getElementById('timer');
+            timerElement.textContent = `Time: ${timer} seconds`;
+
+            if (timer === 0) {
+                // Time's up, check the answer
+                checkAnswer('');
+            } else {
+                timer--;
+                timerf = setTimeout(updateTimer, 1000); // Update the timer every second
+            }
+        }
+        function uangle(a){
+            var res = 0;
+            switch(a){
+                case 0:
+                    res=0;
+                break;
+                case 1:
+                    res=0;
+                break;
+                case 2:
+                    res=2;
+                break;
+                case 3:
+                    res=4;
+                break;
+                case 4:
+                    res=4;
+                break;
+            }         
+            return res*180/4   
+        }
+        function bangle(a){
+            if(a==0 ){
+                return 90;
+            }
+            if(a==4){
+                return 270;
+            }
+            return 0;
+        }
+        function loadQuestion(question) {
+            timer = 5; // Reset the timer for each question
+            updateTimer();
+
+            var le = question.correctAnswer;
+            var boin = hiramap[le]%5;
+            var siin = Math.floor(hiramap[le]/5);
+            console.log(siin)
+            lrotate(-uangle(boin),bangle(boin))
+            rrotate(uangle(siin%5),-bangle(siin%5))
+            if(siin>=5){document.getElementById("rect42").style = "fill:#000000;stroke-width:0.707584;stroke-dasharray:none";}else
+            {
+                document.getElementById("rect42").style = "fill:#ff6600;stroke-width:0.707584;stroke-dasharray:none"
+            }
+            const answerOptions = document.getElementById('answerOptions');
+            answerOptions.innerHTML = ''; // Clear previous options
+
+            shuffleArray(question.options);
+
+            question.options.forEach(option => {
+                const li = document.createElement('li');
+                const button = document.createElement('button');
+                button.textContent = option;
+                button.onclick = () => checkAnswer(option);
+                li.appendChild(button);
+                answerOptions.appendChild(li);
+            });
+        }
+
+        function checkAnswer(userAnswer) {
+            clearTimeout(timerf); // Stop the timer
+            const correctAnswer = questions[currentQuestion].correctAnswer;
+            const resultText = document.getElementById('result');
+            const feedbackSection = document.getElementById('feedback');
+
+            if (userAnswer === correctAnswer) {
+                resultText.textContent = "Correct!";
+                resultText.classList.add('correct');
+            } else {
+                resultText.textContent = `Incorrect. The correct answer is ${correctAnswer}.`;
+                resultText.classList.add('incorrect');
+            }
+
+            feedbackSection.style.display = 'block';
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            var nextletter = hira[Math.floor(Math.random()*(hira.length))];
+            var na = {
+                image: "/images/" + nextletter + ".png",
+                correctAnswer : nextletter,
+                options:[]
+            };
+            questions.push(na)
+
+            if (currentQuestion < questions.length) {
+                loadQuestion(questions[currentQuestion]);
+
+                const feedbackSection = document.getElementById('feedback');
+                feedbackSection.style.display = 'none';
+
+                // Clear the result classes
+                const resultText = document.getElementById('result');
+                resultText.classList.remove('correct', 'incorrect');
+            } else {
+                // All questions are answered.
+                alert("Congratulations! You've completed the game.");
+            }
+        }
+
+        // Load the first question
+        loadQuestion(questions[currentQuestion]);
+
+    function lrotate(ua,ba){
+    document.getElementById("path42").setAttribute('transform', 'rotate(' + ua + ',' + lurig.x + ',' + lurig.y +  ')')
+    k = lurig.minus(lbrig)
+    k2 = lbrig.minus(lurig)
+    var tg = new Pos(k.x * Math.cos(-ba/180*Math.PI) - k.y*Math.sin(-ba/180*Math.PI),k.x * Math.sin(-ba/180*Math.PI) + k.y * Math.cos(-ba/180*Math.PI))
+    var ke = tg.plus(lbrig)
+    var tg2 = new Pos(k2.x * Math.cos(ua/180*Math.PI) - k2.y*Math.sin(ua/180*Math.PI),k2.x * Math.sin(ua/180*Math.PI) + k2.y * Math.cos(ua/180*Math.PI))
+    var ke2 = tg2.plus(lurig)
+    document.getElementById("path43").setAttribute('transform', 'rotate(' + ba + ',' + lbrig.x + ',' + lbrig.y +  ')' +' ' + 'rotate(' + ua + ',' + ke.x + ',' + ke.y +  ')')
+    document.getElementById("ellipse4").setAttribute('transform','translate(' + (ke2.x - lbrig.x) + ',' + (ke2.y - lbrig.y) + ')')
+    }
+    function rrotate(ua,ba){
+    document.getElementById("rect41").setAttribute('transform', 'rotate(' + ua + ',' + rurig.x + ',' + rurig.y +  ')')
+    k = rurig.minus(rbrig)
+    k2 = rbrig.minus(rurig)
+    var tg = new Pos(k.x * Math.cos(-ba/180*Math.PI) - k.y*Math.sin(-ba/180*Math.PI),k.x * Math.sin(-ba/180*Math.PI) + k.y * Math.cos(-ba/180*Math.PI))
+    var ke = tg.plus(rbrig)
+    var tg2 = new Pos(k2.x * Math.cos(ua/180*Math.PI) - k2.y*Math.sin(ua/180*Math.PI),k2.x * Math.sin(ua/180*Math.PI) + k2.y * Math.cos(ua/180*Math.PI))
+    var ke2 = tg2.plus(rurig)
+    document.getElementById("rect42").setAttribute('transform', 'rotate(' + ba + ',' + rbrig.x + ',' + rbrig.y +  ')' +' ' + 'rotate(' + ua + ',' + ke.x + ',' + ke.y +  ')')
+    document.getElementById("ellipse3").setAttribute('transform','translate(' + (ke2.x - rbrig.x) + ',' + (ke2.y - rbrig.y) + ')')}
+
+    </script>
+</body>
+</html>
